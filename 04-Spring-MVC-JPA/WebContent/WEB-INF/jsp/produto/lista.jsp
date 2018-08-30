@@ -9,9 +9,10 @@
 		<script>
 			$(".botao-remover").on('click', function(e) {
 				var produtoId = e.target.id;
+				var $produto = $("#" + produtoId);
 				
 				$('#id-remover').val(produtoId);
-				$('#nome-produto').text($("#" + produtoId).text())
+				$('#nome-produto').text($produto.text())
 			});
 		</script>
 	</jsp:attribute>
@@ -19,9 +20,9 @@
 	<jsp:body>
 		<h1>Lista de Produtos</h1>
 	
-		<c:if test="${not empty msg }">
+		<c:if test="${not empty msg}">
 			<div class="alert alert-success">
-				${msg }
+				${msg}
 			</div>
 		</c:if>
 	
