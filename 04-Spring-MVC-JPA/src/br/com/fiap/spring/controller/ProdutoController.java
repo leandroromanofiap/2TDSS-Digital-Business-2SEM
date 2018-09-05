@@ -1,5 +1,7 @@
 package br.com.fiap.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -78,6 +80,13 @@ public class ProdutoController {
 		}
 		
 		return "redirect:/produto/listar";
+	}
+	
+	@GetMapping("buscar")
+	public ModelAndView buscar(String nomeProduto) {
+		List<Produto> produtos = dao.buscarPorNome(nomeProduto);
+		
+		return new ModelAndView("produto/lista").addObject("produtos", produtos);
 	}
 	
 }
