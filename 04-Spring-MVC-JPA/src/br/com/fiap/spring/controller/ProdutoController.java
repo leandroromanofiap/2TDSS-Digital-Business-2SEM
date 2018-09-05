@@ -64,7 +64,7 @@ public class ProdutoController {
 	
 	@Transactional
 	@PostMapping("apagar")
-	public ModelAndView apagar(String id, RedirectAttributes attributes) {
+	public String apagar(String id, RedirectAttributes attributes) {
 		
 		try {
 			dao.remover(Integer.parseInt(id));
@@ -77,7 +77,7 @@ public class ProdutoController {
 			e.printStackTrace();
 		}
 		
-		return new ModelAndView("redirect:/produto/listar");
+		return "redirect:/produto/listar";
 	}
 	
 }
